@@ -1,3 +1,4 @@
+const fs = require('fs');
 const express = require('express');
 
 const app = express();
@@ -12,9 +13,11 @@ const app = express();
 //  res.send("You can post to this endpoint...");
 // });
 
-app.get('/api/v1/tours', (req, res) => {
-  
-})
+const tours = JSON.parse(
+  fs.readFileSync(`$__dirname}/dev-data/data/tours-simple.json`)
+);
+
+app.get('/api/v1/tours', (req, res) => {});
 
 const port = 3000;
 app.listen(port, () => {
