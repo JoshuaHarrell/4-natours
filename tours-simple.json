@@ -15,6 +15,9 @@
   },
   
   {
-    "name": "The Sea Explorer"
+    "id": 1,
+    "name": "The Sea Explorer",
+    "duration": 7,
+    "maxGroupSize": 15
   }
 ]
