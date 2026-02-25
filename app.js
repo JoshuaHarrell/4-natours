@@ -13,7 +13,7 @@ const getAllTours = (req, res) => {
     status: 'success',
     results: tours.length,
     data: {
-      tour: '<Updated tour here>'
+      tour: '<tour updated>'
     }
   });
 };
@@ -28,7 +28,9 @@ const updateTour = (req, res) => {
 
   res.status(200).json({
     status: 'success',
-    message: 'Tour updated'
+    data: {
+      tour: 'Updated tour here'
+    }
   });
 };
 
