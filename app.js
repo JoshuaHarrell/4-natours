@@ -29,8 +29,11 @@ app.get('/api/v1/tours', (req, res) => {
   })
 });
 
-app.get('/api/v1/tours/:id:x:y?', (req, res) => {
+app.get('/api/v1/tours/:id', (req, res) => {
   console.log(req.params);
+
+  const id = req.params.id * 1;
+  const tour = tours.find(el => el.id === req.params)
 
   res.json(200).json({
     status: "success",
