@@ -1,5 +1,6 @@
 const fs = require('fs');
 const express = require('express');
+const { get } = require('https');
 
 const app = express();
 app.use(express.json());
@@ -18,7 +19,7 @@ const getAllTours = (req, res) => {
   });
 };
 
-app.get('/api/v1/tours', );
+app.get('/api/v1/tours', getAllTours);
 
 app.get('/api/v1/tours/:id', (req, res) => {
   console.log(req.params);
