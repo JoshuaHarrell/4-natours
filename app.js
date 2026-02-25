@@ -32,6 +32,7 @@ app.get('/api/v1/tours', (req, res) => {
 app.get('/api/v1/tours/:id', (req, res) => {
   console.log(req.params);
   const id = req.params.id * 1;
+
   const tour = tours.find(el => el.id === id);
 
   // if(id > tours.length) {
@@ -61,7 +62,9 @@ app.post('/api/v1/tours', (req, res) => {
 
   tours.push(newTour);
 
-  fs.writeFile(`__{dirname}/dev-data/data/tours-simple.json`, JSON.stringify(tours), err => {
+  fs.writeFile(`__{dirname}/dev-data/data/tours-simple.json`, 
+    JSON.stringify(tours), 
+    err => {
     res.status(201).json({
       status: 'success',
       data: {
@@ -70,6 +73,15 @@ app.post('/api/v1/tours', (req, res) => {
     });
   });
 });
+
+app.patch('/api/v1/tours/:id', (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    data: {
+      tour: '<Updated tour here...>'
+    }
+  })
+})
 
 const port = 3000;
 app.listen(port, () => {
