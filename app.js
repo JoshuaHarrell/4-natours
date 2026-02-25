@@ -2,32 +2,23 @@ const fs = require('fs');
 const express = require('express');
 
 const app = express();
-
-// app.use(express.json());
-
-// app.get('/', (req, res) => {
-//  res
-//  .status(200)
-//  .json({message: 'Hello from the server side!', app: 'Natours' });
-// });
-
-// app.post('/', (req, res) => {
-//  res.send("You can post to this endpoint...");
-// });
+app.use(express.json());
 
 const tours = JSON.parse(
   fs.readFileSync(`$__dirname}/dev-data/data/tours-simple.json`)
 );
 
-app.get('/api/v1/tours', (req, res) => {
-  res.json(200).json({
-    status: "success",
+const getAllTours = (req, res) => {
+  res.status(200).json({
+    status: 'success',
     results: tours.length,
     data: {
-      tours
+
     }
-  })
-});
+  });
+};
+
+app.get('/api/v1/tours', );
 
 app.get('/api/v1/tours/:id', (req, res) => {
   console.log(req.params);
@@ -41,7 +32,7 @@ app.get('/api/v1/tours/:id', (req, res) => {
       status: 'fail',
       message: 'Invalid ID'
     });
-  }
+  };
 
 
 
