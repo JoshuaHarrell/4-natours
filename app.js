@@ -103,7 +103,11 @@ app
 .get(getAllTours)
 .post(createTour);
 
-
+app
+.use((req, res, next) => {
+  console.log('Hello from the middleware');
+  next();
+});
 
 app.route('/api/v1/tours/:id')
 .get(getTour)
