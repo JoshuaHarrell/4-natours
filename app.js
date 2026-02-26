@@ -4,6 +4,11 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
+app
+.use((req, res, next) => {
+  console.log('Hello from the middleware');
+  next();
+});
 
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
@@ -98,11 +103,7 @@ app
 .get(getAllTours)
 .post(createTour);
 
-app
-.use((req, res, next) => {
-  console.log('Hello from the middleware');
-  next();
-});
+
 
 app.route('/api/v1/tours/:id')
 .get(getTour)
