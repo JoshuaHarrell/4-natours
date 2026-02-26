@@ -1,5 +1,6 @@
 const fs = require('fs');
 const express = require('express');
+const { create } = require('domain');
 
 const app = express();
 app.use(express.json());
@@ -51,7 +52,7 @@ app.post('/api/v1/tours', (req, res) => {
     res.status(201).json({
       status: 'success',
       data: {
-        tour: newTour
+        tour: '<Updated tour here>'
       }
     });
   });
@@ -69,6 +70,20 @@ app.delete('/api/v1/tours/:id', (req, res) => {
     data: null
   });
 });
+
+// app.get('/api/v1/tours', getAllTours);
+// app.get('/api/v1/tours/:id', getTour);
+app.get('/api/v1/tours', createTour);
+app.get('/api/v1/tours/:id', updateTour);
+app.delete('/api/v1/tours/:id', deleteTour);
+
+app
+.route('/api/v1/tours')
+.get(getAllTours)
+.post(createTour);
+
+
+
 
 const port = 3000;
 app.listen(port, () => {
