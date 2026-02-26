@@ -1,9 +1,9 @@
 const fs = require('fs');
 const express = require('express');
-const { create } = require('domain');
 
 const app = express();
 app.use(express.json());
+
 
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
@@ -73,17 +73,24 @@ app.delete('/api/v1/tours/:id', (req, res) => {
 
 // app.get('/api/v1/tours', getAllTours);
 // app.get('/api/v1/tours/:id', getTour);
-app.get('/api/v1/tours', createTour);
-app.get('/api/v1/tours/:id', updateTour);
-app.delete('/api/v1/tours/:id', deleteTour);
+// app.get('/api/v1/tours', createTour);
+// app.get('/api/v1/tours/:id', updateTour);
+// app.delete('/api/v1/tours/:id', deleteTour);
 
 app
 .route('/api/v1/tours')
 .get(getAllTours)
 .post(createTour);
 
+app.use((req, res, next) => {
+  console.log('Hello from the middleware');
+  next();
+});
 
-
+app.route('/api/v1/tours/:id')
+.get(getTour)
+.patch(updateTour)
+.delete(deleteTour);
 
 const port = 3000;
 app.listen(port, () => {
