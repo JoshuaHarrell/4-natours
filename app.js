@@ -142,29 +142,36 @@ const deleteUser = (req, res) => {
 };
 
 // 3) ROUTES
+app.use('/api/v1/tours', tourRouter);
+app.use('/api/v1/users', tourRouter);
+
 const tourRouter = express.Router();
-app
+const userRouter = express.Router();
+
+tourRouter
 .route('/api/v1/tours')
 .get(getAllTours)
 .post(createTour);
 
-app
+tourRouter
 .use((req, res, next) => {
   console.log('Hello from the middleware');
   next();
 });
 
-app
+tourRouter
 .route('/api/v1/tours/:id')
 .get(getTour)
 .patch(updateTour)
 .delete(deleteTour);
 
-app.route('/api/v1/users')
+userRouter
+.route('/api/v1/users')
 .get(getAllUsers)
 .post(createUser);
 
-app.route('/api/v1/users/:id')
+userRouter
+.route('/api/v1/users/:id')
 .get(getUser)
 .patch(updateUser)
 .delete(deleteUser);
