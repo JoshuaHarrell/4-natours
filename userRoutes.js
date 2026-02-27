@@ -12,3 +12,5 @@ router
 .get(getUser)
 .patch(updateUser)
 .delete(deleteUser);
+
+module.exports = router;
