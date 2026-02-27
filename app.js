@@ -146,17 +146,6 @@ const tourRouter = express.Router();
 const userRouter = express.Router();
 
 tourRouter
-.route('/api/v1/tours')
-.get(getAllTours)
-.post(createTour);
-
-tourRouter
-.use((req, res, next) => {
-  console.log('Hello from the middleware');
-  next();
-});
-
-tourRouter
 .route('/api/v1/tours/:id')
 .get(getTour)
 .patch(updateTour)
