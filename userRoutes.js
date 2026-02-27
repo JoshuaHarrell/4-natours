@@ -1,14 +1,14 @@
-const express = require('express')
 
-const router = express.Router();
 
-tourRouter
-.route('/')
-.get(getAllTours)
-.post(createTour);
+const userRouter = express.Router();
 
-tourRouter
-.route('/:id')
-.get(getTour)
-.patch(updateTour)
-.delete(deleteTour);
+userRouter
+.route('/api/v1/users')
+.get(getAllUsers)
+.post(createUser);
+
+userRouter
+.route('/api/v1/users/:id')
+.get(getUser)
+.patch(updateUser)
+.delete(deleteUser);
