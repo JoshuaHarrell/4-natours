@@ -19,56 +19,11 @@ app.use((req, res, next) => {
   next();
 })
 
-// 2) ROUTE HANDLERS
-
-const getAllUsers = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined!'
-  });
-};
-
-const getUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined!'
-  });
-};
-
-const createUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined!'
-  });
-};
-
-const updateUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined!'
-  });
-};
-
-const deleteUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined!'
-  });
-};
+const tours = JSON.parse(
+  fs.readFileSync(`$__dirname}/dev-data/data/tours-simple.json`)
+);
 
 // 3) ROUTES
-const userRouter = express.Router();
-
-userRouter
-.route('/api/v1/users')
-.get(getAllUsers)
-.post(createUser);
-
-userRouter
-.route('/api/v1/users/:id')
-.get(getUser)
-.patch(updateUser)
-.delete(deleteUser);
 
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
