@@ -1,14 +1,14 @@
+const express = require('express')
 
+const router = express.Router();
 
-const userRouter = express.Router();
-
-userRouter
-.route('/api/v1/users')
+router
+.route('/')
 .get(getAllUsers)
 .post(createUser);
 
-userRouter
-.route('/api/v1/users/:id')
+router
+.route('/:id')
 .get(getUser)
 .patch(updateUser)
 .delete(deleteUser);
