@@ -61,12 +61,19 @@ exports.createTour = async (req, res) => {
 };
 
 exports.updateTour = (req, res) => {
-  res.status(200).json({
+  try {
+    
+    res.status(200).json({
     status: 'success',
     data: {
       tour: '<Updated tour here...>'
     }
   });
+
+  } catch (err) {
+
+  }
+  
 };
 
 exports.deleteTour = (req, res) => {
@@ -81,4 +88,4 @@ exports.deleteTour = (req, res) => {
     status: 'success',
     data: null
   });
-}
+};
