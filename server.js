@@ -17,23 +17,6 @@ mongoose
 })
 .then(() => console.log('DB Connection successful!'));
 
-
-
- const testTour = new Tour({
-  name: 'The Forest Hiker',
-  price: 997
- });
-
-testTour
-.save()
-.then(doc => {
-  console.log(doc);
-})
-
-.catch(err => {
-  console.log('ERROR:', err);
-});
-
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`App running on port ${port}...`);  
