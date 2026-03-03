@@ -38,8 +38,12 @@ exports.getTour = (req, res) => {
 // });
 
 exports.createTour = (req, res) => {
-  
-
+  res.status(201).json({
+    status: 'success'
+    // data: {
+    //   tour: newTour
+    // }
+  });
 };
 
 exports.updateTour = (req, res) => {
