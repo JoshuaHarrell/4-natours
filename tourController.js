@@ -10,9 +10,10 @@ exports.getAllTours = async (req, res) => {
     const tours = Tour.find(queryObj);
 
     console.log(req.query);
-   // { difficulty: 'easy', duration: { $gte: 5 } }
 
-  //  const query = Tour.find()
+
+   // { difficulty: 'easy', duration: { $gte: 5 } }
+   //  const query = Tour.find()
   //  .where('duration')
   //  .equals(5)
   //  .where('difficulty')
