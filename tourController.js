@@ -23,6 +23,8 @@ module.exports = app;class APIFeatures {
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`);
 
     this.query.find(JSON.parse(queryStr));
+
+    return this;
   }
 
   sort() {
@@ -32,9 +34,10 @@ module.exports = app;class APIFeatures {
      } else {
        this.query = this.query.sort('-createdAt');
      }
+
+     return this;
   }
 }
-
 
 exports.getAllTours = async (req, res) => {
   try {
@@ -81,7 +84,7 @@ exports.getAllTours = async (req, res) => {
   }
 
   // EXECUTE QUERY
-  const features = new APIFeatures(Tour.find(), req.query).filter();
+  const features = new APIFeatures(Tour.find(), req.query).filter().sort();
   const tours = await features.query;
 
   // SEND RESPONSE
