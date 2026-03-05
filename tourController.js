@@ -24,6 +24,15 @@ module.exports = app;class APIFeatures {
 
     this.query.find(JSON.parse(queryStr));
   }
+
+  sort() {
+    if(this.queryString.sort) {
+    const sortBy = this.queryString.sort.split(',').join('');
+    this.query = this.query.sort(req.sortBy);
+     } else {
+       this.query = this.query.sort('-createdAt');
+     }
+  }
 }
 
 
@@ -73,7 +82,7 @@ exports.getAllTours = async (req, res) => {
 
   // EXECUTE QUERY
   const features = new APIFeatures(Tour.find(), req.query).filter();
-  const tours = await query;
+  const tours = await features.query;
 
   // SEND RESPONSE
   res.status(200).json({
