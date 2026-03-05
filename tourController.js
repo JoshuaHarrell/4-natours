@@ -1,5 +1,9 @@
 const Tour = require('./../modules/tourModel');
 
+exports.aliasTopTours = (req, res, next) = {
+  req, query, limit: '5'
+};
+
 exports.getAllTours = async (req, res) => {
   try {
     console.log(req.query);
@@ -41,17 +45,11 @@ exports.getAllTours = async (req, res) => {
 
   if(req.query.page) {
     const numTours = await Tour.countDocuments();
-    if(skip > numTours) throw new Error('This page does not exist');
+    if(skip >= numTours) throw new Error('This page does not exist');
   }
 
   // EXECUTE QUERY
   const tours = await query;
-
-  //  const query = Tour.find()
-  //  .where('duration')
-  //  .equals(5)
-  //  .where('difficulty')
-  //  .equals('easy');
 
   // SEND RESPONSE
   res.status(200).json({
