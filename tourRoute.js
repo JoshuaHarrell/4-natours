@@ -1,5 +1,6 @@
 const express = require('express')
 const tourController = require('./../controllers/tourController');
+const mongoose = require('mongoose');
 
 const router = express.Router();
 
@@ -16,4 +17,5 @@ router
   .patch(tourController.updateTour)
   .delete(tourController.deleteTour);
 
-  module.exports = router;
+  
+
